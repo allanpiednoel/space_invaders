@@ -1,0 +1,7 @@
+serie.c:14:6:serial_init	48	static
+serie.c:58:6:serial_putchar	16	static
+serie.c:74:6:serial_puts	16	static
+serie.c:80:13:serial_get_last_char	4	static
+serie.c:93:16:serial_input_not_empty	8	static
+serie.c:98:13:serial_input_character	4	static
+serie.c:104:6:USART2_IRQHandler	8	static

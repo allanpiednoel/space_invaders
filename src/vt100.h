@@ -2,7 +2,6 @@
 #define VT100_H_
 
 #include <stdint.h>
-
 #define VT100_SCREEN_HEIGHT (24)
 #define VT100_SCREEN_WIDTH  (80)
 

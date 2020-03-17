@@ -1,0 +1,6 @@
+menu.c:22:6:bordures	8	static
+menu.c:40:6:perso_init	8	static
+menu.c:46:6:depl_perso	16	static
+menu.c:133:6:menu	8	static
+depl_enn.c:20:6:depl_enn	4	static
+depl_enn.c:37:6:rangs_ennemis	8	static

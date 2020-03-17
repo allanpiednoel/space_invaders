@@ -1,0 +1,3 @@
+personnages.c:12:6:ennemi_base	8	static
+personnages.c:17:6:perso	8	static
+personnages.c:22:6:boss	8	static

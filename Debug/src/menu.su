@@ -1,5 +1,4 @@
 menu.c:37:6:bordures	16	static
 menu.c:60:6:ecran_fin	8	static
 menu.c:84:6:game_over	8	static
-menu.c:106:6:jeu	16	static
-menu.c:174:6:menu	8	static
+menu.c:106:6:menu	8	static

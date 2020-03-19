@@ -94,10 +94,6 @@ void combat_final()
 			sleep_moi(VITESSE_JEU);
 		}
 
-		/* le boss avance de G a D très vite mais ne descends pas;
-		 * il tir comme un batard
-		 * sa vie doit etre de 4 hits
-		 */
 	}
 }
 

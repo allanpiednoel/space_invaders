@@ -192,18 +192,20 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
 
 void random_tir(donnees_ennemi *p_ennemy)
 {
-	if (*ptr_y_mun_enn == p_ennemy->y_enne)
+	if (*ptr_y_mun_enn == p_ennemy->y_enne) //opération determinant un
+											//nombre aléatoire
 	{
 		*ptr_lun_apres_lautre = *ptr_tir_ennemi_switch
 				% (*ptr_vies_ennemis / VIE_ENNEMIS);
 	}
-	//faire tirer l'ennemi tout les 'n' cycles de la boucle + reset du compteur
+	//condition de tir
 	if ((p_ennemy->vie_enne != 0 && *ptr_y_mun_enn == p_ennemy->y_enne)
 			|| *ptr_y_mun_enn != p_ennemy->y_enne)
 
 	{
 		tir_enn(&tableau_ennemis[*ptr_lun_apres_lautre]);
 	}
+	//si l'ennemi est mort, effacer son missile
 	else if (p_ennemy->vie_enne == 0)
 	{
 		*ptr_y_mun_enn = 23;

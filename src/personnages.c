@@ -43,29 +43,34 @@ void compteur_vies(int nb_vies)
 	serial_puts("vies restantes : ");
 		perso(19 + 6 * compteur, 23);
 	}
+	vt100_move(19 + 6 * *ptr_vie_perso, 23);
+	serial_puts("     ");
+}
 
-	switch (*ptr_vie_perso)
-	{
-	case 2:
+//on peut aussi passer par un switch case
 
-
-		vt100_move(31, 23);
-		serial_puts("     ");
-		break;
-
-	case 1:
-
-
-		vt100_move(25, 23);
-		serial_puts("     ");
-		break;
-
-	case 0:
-
-		vt100_move(19, 23);
-		serial_puts("     ");
-		break;
-	}
-
-	}
+//	switch (*ptr_vie_perso)
+//	{
+//	case 2:
+//
+//
+//		vt100_move(19 + 6 * *ptr_vie_perso, 23);
+//		serial_puts("     ");
+//		break;
+//
+//	case 1:
+//
+//
+//		vt100_move(19 + 6 * *ptr_vie_perso, 23);
+//		serial_puts("     ");
+//		break;
+//
+//	case 0:
+//
+//		vt100_move(19 + 6 * *ptr_vie_perso, 23);
+//		serial_puts("     ");
+//		break;
+//	}
+//
+//	}
 

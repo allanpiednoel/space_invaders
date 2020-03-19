@@ -17,7 +17,7 @@ extern int x_missile;
 extern int x_perso;
 extern int y_perso;
 
-void tir()	//a deplacer dans un nouveau fichier 'perso'
+void tir()
 {
 	//condition pour que le missile ne suive pas le perso une fois lancé
 	if (*ptr_y_mun == 22)
@@ -45,7 +45,7 @@ void tir()	//a deplacer dans un nouveau fichier 'perso'
 	}
 }
 
-void depl_perso(void)		//a deplacer dans un nouveau fichier 'perso'
+void depl_perso(void)
 {
 
 	carac = serial_get_last_char();

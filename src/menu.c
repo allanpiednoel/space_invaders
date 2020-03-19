@@ -21,7 +21,7 @@ static int x_perso = INIT_PERSO_X;
 static int y_mun = INIT_PERSO_Y;
 static int x_missile;
 static u8 tir_ennemi;
-static u8 vie_perso = VIES_PERSO;
+
 static u8 lun_apres_lautre;
 u8 *ptr_lun_apres_lautre = &lun_apres_lautre;
 static uint8_t tir_ennemi_switch;
@@ -31,7 +31,7 @@ int *ptr_x_perso = &x_perso;
 int *ptr_y_mun = &y_mun;
 int *ptr_x_missile = &x_missile;
 u8 *ptr_tir_ennemi = &tir_ennemi;
-u8 *ptr_vie_perso = &vie_perso;
+
 donnees_ennemi *p_ennemy;
 
 void bordures()
@@ -103,71 +103,6 @@ void game_over()
 	sleep_moi(100);
 }
 
-void jeu()
-{
-	//u8 a;
-	uint8_t i;
-	//boucle infinie faisant tourner le jeu
-	while (1)
-	{
-		tir_ennemi_switch += 1;
-
-		depl_perso();
-
-		//determine le nombre de vies restantes du joueur
-		compteur_vies(vie_perso);
-
-		//fonction déplacement ennemi
-		for (i = 0; i <= ID_CASE_MAX; i++)
-		{
-			depl_1_enn(&tableau_ennemis[i]);
-			hit_ennemis(&tableau_ennemis[i]);
-
-		}
-		random_tir(&tableau_ennemis[*ptr_lun_apres_lautre]);
-		//fonction déplacement joueur
-
-		//condition pour pouvoir tirer et faire continer la course du missile
-		if (carac == 'z' || *ptr_y_mun != 22)
-		{
-
-			tir();
-
-		}
-
-		//animation combat final après avoir tué tout les ennemis
-		if (*ptr_vies_ennemis == 0)
-		{
-			break;
-		}
-
-		//animation game over
-		if (*ptr_vie_perso == 0)
-		{
-			vt100_clear_screen();
-			bordures();
-			game_over();
-		}
-
-//			*ptr_tir_ennemi += 1;
-//		if (*ptr_tir_ennemi == FREQUENCE_TIR_ENNEMIS + 1)
-//		{
-//			*ptr_tir_ennemi = 0;
-//		}
-
-		sleep_moi(VITESSE_JEU);
-	}
-	vt100_clear_screen();
-	bordures();
-	combat_final();
-	vt100_clear_screen();
-	bordures();
-	while (1)
-	{
-		ecran_fin();
-	}
-}
-
 void menu()
 {
 
@@ -180,12 +115,12 @@ void menu()
 	serial_puts("tu as été choisi pour déjouer leurs plans");
 	vt100_move(27, 5);
 	serial_puts("(moi perso ils me font peur)");
-	vt100_move(24, 6);
-	serial_puts("challah on a fait le bon choix...");
+	vt100_move(23, 6);
+	serial_puts("J'espère on a fait le bon choix...");
 	vt100_move(34, 10);
 	serial_puts("SPACE INVADERS");
 	vt100_move(3, 22);
-	serial_puts("made by");
+	serial_puts("Réalisé par :");
 	vt100_move(3, 23);
 	serial_puts("Allan Piednoel");
 

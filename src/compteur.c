@@ -6,7 +6,7 @@
  */
 
 #include "vt100.h"
-#include "menu.h"
+#include "depl_enn.h"
 
 void sleep_moi(unsigned long int t)
 {

@@ -7,9 +7,8 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_usart.h"
 #include "vt100.h"
-#include "persos.h"
 #include "serie.h"
-#include "menu.h"
+#include "depl_enn.h"
 #include <stdio.h>
 #include <stdlib.h>
 typedef uint16_t u16;
@@ -204,6 +203,7 @@ void random_tir(donnees_ennemi *p_ennemy)
 
 	{
 		tir_enn(&tableau_ennemis[*ptr_lun_apres_lautre]);
+		sleep_moi(1);
 	}
 	//si l'ennemi est mort, effacer son missile
 	else if (p_ennemy->vie_enne == 0)

@@ -9,10 +9,8 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_usart.h"
 #include "vt100.h"
-#include "persos.h"
 #include "serie.h"
 #include "depl_enn.h"
-#include "menu.h"
 
 extern signed char carac;
 static u8 vie_perso = VIES_PERSO;

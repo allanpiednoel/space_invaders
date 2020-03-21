@@ -2590,7 +2590,7 @@ OUTPUT(space_invaders_atoll.elf elf32-littlearm)
  .debug_ranges  0x00000000000007f8       0x20 src/system_stm32f4xx.o
  .debug_ranges  0x0000000000000818       0x18 src/vt100.o
 
-.debug_line     0x0000000000000000     0x4224
+.debug_line     0x0000000000000000     0x41d5
  .debug_line    0x0000000000000000      0x23d Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .debug_line    0x000000000000023d      0x351 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.o
  .debug_line    0x000000000000058e      0x429 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
@@ -2600,19 +2600,19 @@ OUTPUT(space_invaders_atoll.elf elf32-littlearm)
  .debug_line    0x000000000000173c      0x4c9 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
  .debug_line    0x0000000000001c05      0x28e Utilities/STM32F4-Discovery/stm32f4_discovery.o
  .debug_line    0x0000000000001e93      0x6f9 Utilities/STM32F4-Discovery/stm32f4_discovery_audio_codec.o
- .debug_line    0x000000000000258c      0x32d src/boss.o
- .debug_line    0x00000000000028b9      0x135 src/compteur.o
- .debug_line    0x00000000000029ee      0x34d src/depl_ennemis.o
- .debug_line    0x0000000000002d3b      0x2bc src/jeu.o
- .debug_line    0x0000000000002ff7      0x2ae src/joueur.o
- .debug_line    0x00000000000032a5      0x210 src/main.o
- .debug_line    0x00000000000034b5      0x33f src/menu.o
- .debug_line    0x00000000000037f4      0x1f4 src/personnages.o
- .debug_line    0x00000000000039e8      0x27c src/serie.o
- .debug_line    0x0000000000003c64       0x7a src/startup_stm32f40xx.o
- .debug_line    0x0000000000003cde      0x211 src/stm32f4xx_it.o
- .debug_line    0x0000000000003eef      0x203 src/system_stm32f4xx.o
- .debug_line    0x00000000000040f2      0x132 src/vt100.o
+ .debug_line    0x000000000000258c      0x323 src/boss.o
+ .debug_line    0x00000000000028af      0x12b src/compteur.o
+ .debug_line    0x00000000000029da      0x344 src/depl_ennemis.o
+ .debug_line    0x0000000000002d1e      0x2b2 src/jeu.o
+ .debug_line    0x0000000000002fd0      0x2a4 src/joueur.o
+ .debug_line    0x0000000000003274      0x206 src/main.o
+ .debug_line    0x000000000000347a      0x335 src/menu.o
+ .debug_line    0x00000000000037af      0x1ea src/personnages.o
+ .debug_line    0x0000000000003999      0x27c src/serie.o
+ .debug_line    0x0000000000003c15       0x7a src/startup_stm32f40xx.o
+ .debug_line    0x0000000000003c8f      0x211 src/stm32f4xx_it.o
+ .debug_line    0x0000000000003ea0      0x203 src/system_stm32f4xx.o
+ .debug_line    0x00000000000040a3      0x132 src/vt100.o
 
 .debug_str      0x0000000000000000     0x30ee
  .debug_str     0x0000000000000000      0x41e Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o

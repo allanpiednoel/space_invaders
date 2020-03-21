@@ -1,4 +1,4 @@
-personnages.c:17:6:ennemi_base	16	static
-personnages.c:23:6:perso	16	static
-personnages.c:29:6:boss	16	static
-personnages.c:36:6:compteur_vies	24	static
+personnages.c:16:6:ennemi_base	16	static
+personnages.c:22:6:perso	16	static
+personnages.c:28:6:boss	16	static
+personnages.c:35:6:compteur_vies	24	static

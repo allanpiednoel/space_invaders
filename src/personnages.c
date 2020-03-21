@@ -9,7 +9,6 @@
 #include "vt100.h"
 #include "serie.h"
 #include "depl_enn.h"
-#include "menu.h"
 #include <stdint.h>
 
 

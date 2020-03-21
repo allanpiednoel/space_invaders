@@ -31,15 +31,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  13 .debug_ranges 00000830  00000000  00000000  0002cd20  2**3
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   00004224  00000000  00000000  0002d550  2**0
+ 14 .debug_line   000041d5  00000000  00000000  0002d550  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    000030ee  00000000  00000000  00031774  2**0
+ 15 .debug_str    000030ee  00000000  00000000  00031725  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .comment      0000007c  00000000  00000000  00034862  2**0
+ 16 .comment      0000007c  00000000  00000000  00034813  2**0
                   CONTENTS, READONLY
- 17 .debug_frame  00002438  00000000  00000000  000348e0  2**2
+ 17 .debug_frame  00002438  00000000  00000000  00034890  2**2
                   CONTENTS, READONLY, DEBUGGING
- 18 .stabstr      0000003f  00000000  00000000  00036d18  2**0
+ 18 .stabstr      0000003f  00000000  00000000  00036cc8  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -2253,7 +2253,7 @@ void Audio_I2S_IRQHandler(void)
  8000d68:	20000024 	.word	0x20000024
 
 08000d6c <animation>:
-#include "menu.h"
+#include "depl_enn.h"
 
 extern signed char carac;
 
@@ -2560,7 +2560,7 @@ void combat_final()
 08000f8c <sleep_moi>:
 
 #include "vt100.h"
-#include "menu.h"
+#include "depl_enn.h"
 
 void sleep_moi(unsigned long int t)
 {
@@ -3124,13 +3124,12 @@ void tir_enn(donnees_ennemi *p_ennemy)
 
 void hit_ennemis(donnees_ennemi *p_ennemy)
 {
-	// condition d'annimation si hit
  800131c:	b580      	push	{r7, lr}
  800131e:	b082      	sub	sp, #8
  8001320:	af00      	add	r7, sp, #0
  8001322:	6078      	str	r0, [r7, #4]
+	// condition d'annimation si hit
 	if (p_ennemy->vie_enne != 0 && *ptr_y_mun == p_ennemy->y_enne
-			&& *ptr_x_missile >= p_ennemy->x_enne
  8001324:	687b      	ldr	r3, [r7, #4]
  8001326:	789b      	ldrb	r3, [r3, #2]
  8001328:	2b00      	cmp	r3, #0
@@ -3142,7 +3141,7 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
  8001334:	7852      	ldrb	r2, [r2, #1]
  8001336:	4293      	cmp	r3, r2
  8001338:	d150      	bne.n	80013dc <hit_ennemis+0xc0>
-			&& *ptr_x_missile <= p_ennemy->x_enne + p_ennemy->taille)
+			&& *ptr_x_missile >= p_ennemy->x_enne
  800133a:	4b2b      	ldr	r3, [pc, #172]	; (80013e8 <hit_ennemis+0xcc>)
  800133c:	681b      	ldr	r3, [r3, #0]
  800133e:	681b      	ldr	r3, [r3, #0]
@@ -3150,7 +3149,7 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
  8001342:	7812      	ldrb	r2, [r2, #0]
  8001344:	4293      	cmp	r3, r2
  8001346:	db49      	blt.n	80013dc <hit_ennemis+0xc0>
-
+			&& *ptr_x_missile <= p_ennemy->x_enne + p_ennemy->taille)
  8001348:	4b27      	ldr	r3, [pc, #156]	; (80013e8 <hit_ennemis+0xcc>)
  800134a:	681b      	ldr	r3, [r3, #0]
  800134c:	681a      	ldr	r2, [r3, #0]
@@ -3162,9 +3161,9 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
  8001358:	440b      	add	r3, r1
  800135a:	429a      	cmp	r2, r3
  800135c:	dc3e      	bgt.n	80013dc <hit_ennemis+0xc0>
+
 	{
 		vt100_move(*ptr_x_missile, *ptr_y_mun + 1);
-		serial_puts(" ");
  800135e:	4b22      	ldr	r3, [pc, #136]	; (80013e8 <hit_ennemis+0xcc>)
  8001360:	681b      	ldr	r3, [r3, #0]
  8001362:	681b      	ldr	r3, [r3, #0]
@@ -3178,15 +3177,15 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
  8001372:	4619      	mov	r1, r3
  8001374:	4610      	mov	r0, r2
  8001376:	f000 fdcd 	bl	8001f14 <vt100_move>
-		sleep_moi(tps);
+		serial_puts(" ");
  800137a:	481c      	ldr	r0, [pc, #112]	; (80013ec <hit_ennemis+0xd0>)
  800137c:	f000 fc60 	bl	8001c40 <serial_puts>
-		vt100_move(p_ennemy->x_enne, p_ennemy->y_enne);
+		sleep_moi(tps);
  8001380:	4b1b      	ldr	r3, [pc, #108]	; (80013f0 <hit_ennemis+0xd4>)
  8001382:	681b      	ldr	r3, [r3, #0]
  8001384:	4618      	mov	r0, r3
  8001386:	f7ff fe01 	bl	8000f8c <sleep_moi>
-		serial_puts("&#$#&");
+		vt100_move(p_ennemy->x_enne, p_ennemy->y_enne);
  800138a:	687b      	ldr	r3, [r7, #4]
  800138c:	781a      	ldrb	r2, [r3, #0]
  800138e:	687b      	ldr	r3, [r7, #4]
@@ -3194,21 +3193,21 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
  8001392:	4619      	mov	r1, r3
  8001394:	4610      	mov	r0, r2
  8001396:	f000 fdbd 	bl	8001f14 <vt100_move>
-		p_ennemy->vie_enne -= 1;
+		serial_puts("&#$#&");
  800139a:	4816      	ldr	r0, [pc, #88]	; (80013f4 <hit_ennemis+0xd8>)
  800139c:	f000 fc50 	bl	8001c40 <serial_puts>
-		//le faire disparaitre
+		p_ennemy->vie_enne -= 1;
  80013a0:	687b      	ldr	r3, [r7, #4]
  80013a2:	789b      	ldrb	r3, [r3, #2]
  80013a4:	3b01      	subs	r3, #1
  80013a6:	b2da      	uxtb	r2, r3
  80013a8:	687b      	ldr	r3, [r7, #4]
  80013aa:	709a      	strb	r2, [r3, #2]
+		//le faire disparaitre
 		sleep_moi(20);
-		vt100_move(p_ennemy->x_enne, p_ennemy->y_enne);
  80013ac:	2014      	movs	r0, #20
  80013ae:	f7ff fded 	bl	8000f8c <sleep_moi>
-		serial_puts("       ");
+		vt100_move(p_ennemy->x_enne, p_ennemy->y_enne);
  80013b2:	687b      	ldr	r3, [r7, #4]
  80013b4:	781a      	ldrb	r2, [r3, #0]
  80013b6:	687b      	ldr	r3, [r7, #4]
@@ -3216,24 +3215,24 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
  80013ba:	4619      	mov	r1, r3
  80013bc:	4610      	mov	r0, r2
  80013be:	f000 fda9 	bl	8001f14 <vt100_move>
-		*ptr_y_mun = 3;
+		serial_puts("       ");
  80013c2:	480d      	ldr	r0, [pc, #52]	; (80013f8 <hit_ennemis+0xdc>)
  80013c4:	f000 fc3c 	bl	8001c40 <serial_puts>
-		compteur_vies_ennemis -= 1;
+		*ptr_y_mun = 3;
  80013c8:	4b06      	ldr	r3, [pc, #24]	; (80013e4 <hit_ennemis+0xc8>)
  80013ca:	681b      	ldr	r3, [r3, #0]
  80013cc:	2203      	movs	r2, #3
  80013ce:	601a      	str	r2, [r3, #0]
-
+		compteur_vies_ennemis -= 1;
  80013d0:	4b0a      	ldr	r3, [pc, #40]	; (80013fc <hit_ennemis+0xe0>)
  80013d2:	781b      	ldrb	r3, [r3, #0]
  80013d4:	3b01      	subs	r3, #1
  80013d6:	b2da      	uxtb	r2, r3
  80013d8:	4b08      	ldr	r3, [pc, #32]	; (80013fc <hit_ennemis+0xe0>)
  80013da:	701a      	strb	r2, [r3, #0]
+
 	}
 }
-
  80013dc:	bf00      	nop
  80013de:	3708      	adds	r7, #8
  80013e0:	46bd      	mov	sp, r7
@@ -3247,21 +3246,22 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
  80013fc:	20000070 	.word	0x20000070
 
 08001400 <random_tir>:
+
 void random_tir(donnees_ennemi *p_ennemy)
 {
-	if (*ptr_y_mun_enn == p_ennemy->y_enne) //opération determinant un
  8001400:	b580      	push	{r7, lr}
  8001402:	b082      	sub	sp, #8
  8001404:	af00      	add	r7, sp, #0
  8001406:	6078      	str	r0, [r7, #4]
-											//nombre aléatoire
+	if (*ptr_y_mun_enn == p_ennemy->y_enne) //opération determinant un
  8001408:	4b21      	ldr	r3, [pc, #132]	; (8001490 <random_tir+0x90>)
  800140a:	681b      	ldr	r3, [r3, #0]
  800140c:	781a      	ldrb	r2, [r3, #0]
  800140e:	687b      	ldr	r3, [r7, #4]
  8001410:	785b      	ldrb	r3, [r3, #1]
  8001412:	429a      	cmp	r2, r3
- 8001414:	d110      	bne.n	8001438 <random_tir+0x38>
+ 8001414:	d10e      	bne.n	8001434 <random_tir+0x34>
+											//nombre aléatoire
 	{
 		*ptr_lun_apres_lautre = *ptr_tir_ennemi_switch
  8001416:	4b1f      	ldr	r3, [pc, #124]	; (8001494 <random_tir+0x94>)
@@ -3274,72 +3274,72 @@ void random_tir(donnees_ennemi *p_ennemy)
  8001422:	6812      	ldr	r2, [r2, #0]
  8001424:	7812      	ldrb	r2, [r2, #0]
 		*ptr_lun_apres_lautre = *ptr_tir_ennemi_switch
- 8001426:	0852      	lsrs	r2, r2, #1
- 8001428:	b2d2      	uxtb	r2, r2
- 800142a:	fbb3 f0f2 	udiv	r0, r3, r2
- 800142e:	fb02 f200 	mul.w	r2, r2, r0
- 8001432:	1a9b      	subs	r3, r3, r2
- 8001434:	b2db      	uxtb	r3, r3
- 8001436:	700b      	strb	r3, [r1, #0]
+ 8001426:	fbb3 f0f2 	udiv	r0, r3, r2
+ 800142a:	fb02 f200 	mul.w	r2, r2, r0
+ 800142e:	1a9b      	subs	r3, r3, r2
+ 8001430:	b2db      	uxtb	r3, r3
+ 8001432:	700b      	strb	r3, [r1, #0]
 	}
 	//condition de tir
 	if ((p_ennemy->vie_enne != 0 && *ptr_y_mun_enn == p_ennemy->y_enne)
- 8001438:	687b      	ldr	r3, [r7, #4]
- 800143a:	789b      	ldrb	r3, [r3, #2]
- 800143c:	2b00      	cmp	r3, #0
- 800143e:	d006      	beq.n	800144e <random_tir+0x4e>
- 8001440:	4b13      	ldr	r3, [pc, #76]	; (8001490 <random_tir+0x90>)
- 8001442:	681b      	ldr	r3, [r3, #0]
- 8001444:	781a      	ldrb	r2, [r3, #0]
- 8001446:	687b      	ldr	r3, [r7, #4]
- 8001448:	785b      	ldrb	r3, [r3, #1]
- 800144a:	429a      	cmp	r2, r3
- 800144c:	d006      	beq.n	800145c <random_tir+0x5c>
+ 8001434:	687b      	ldr	r3, [r7, #4]
+ 8001436:	789b      	ldrb	r3, [r3, #2]
+ 8001438:	2b00      	cmp	r3, #0
+ 800143a:	d006      	beq.n	800144a <random_tir+0x4a>
+ 800143c:	4b14      	ldr	r3, [pc, #80]	; (8001490 <random_tir+0x90>)
+ 800143e:	681b      	ldr	r3, [r3, #0]
+ 8001440:	781a      	ldrb	r2, [r3, #0]
+ 8001442:	687b      	ldr	r3, [r7, #4]
+ 8001444:	785b      	ldrb	r3, [r3, #1]
+ 8001446:	429a      	cmp	r2, r3
+ 8001448:	d006      	beq.n	8001458 <random_tir+0x58>
 			|| *ptr_y_mun_enn != p_ennemy->y_enne)
- 800144e:	4b10      	ldr	r3, [pc, #64]	; (8001490 <random_tir+0x90>)
- 8001450:	681b      	ldr	r3, [r3, #0]
- 8001452:	781a      	ldrb	r2, [r3, #0]
- 8001454:	687b      	ldr	r3, [r7, #4]
- 8001456:	785b      	ldrb	r3, [r3, #1]
- 8001458:	429a      	cmp	r2, r3
- 800145a:	d00c      	beq.n	8001476 <random_tir+0x76>
+ 800144a:	4b11      	ldr	r3, [pc, #68]	; (8001490 <random_tir+0x90>)
+ 800144c:	681b      	ldr	r3, [r3, #0]
+ 800144e:	781a      	ldrb	r2, [r3, #0]
+ 8001450:	687b      	ldr	r3, [r7, #4]
+ 8001452:	785b      	ldrb	r3, [r3, #1]
+ 8001454:	429a      	cmp	r2, r3
+ 8001456:	d00f      	beq.n	8001478 <random_tir+0x78>
 
 	{
 		tir_enn(&tableau_ennemis[*ptr_lun_apres_lautre]);
- 800145c:	4b0d      	ldr	r3, [pc, #52]	; (8001494 <random_tir+0x94>)
- 800145e:	681b      	ldr	r3, [r3, #0]
- 8001460:	781b      	ldrb	r3, [r3, #0]
- 8001462:	461a      	mov	r2, r3
- 8001464:	4613      	mov	r3, r2
- 8001466:	009b      	lsls	r3, r3, #2
+ 8001458:	4b0e      	ldr	r3, [pc, #56]	; (8001494 <random_tir+0x94>)
+ 800145a:	681b      	ldr	r3, [r3, #0]
+ 800145c:	781b      	ldrb	r3, [r3, #0]
+ 800145e:	461a      	mov	r2, r3
+ 8001460:	4613      	mov	r3, r2
+ 8001462:	009b      	lsls	r3, r3, #2
+ 8001464:	4413      	add	r3, r2
+ 8001466:	4a0e      	ldr	r2, [pc, #56]	; (80014a0 <random_tir+0xa0>)
  8001468:	4413      	add	r3, r2
- 800146a:	4a0d      	ldr	r2, [pc, #52]	; (80014a0 <random_tir+0xa0>)
- 800146c:	4413      	add	r3, r2
- 800146e:	4618      	mov	r0, r3
- 8001470:	f7ff fe8e 	bl	8001190 <tir_enn>
-	}
+ 800146a:	4618      	mov	r0, r3
+ 800146c:	f7ff fe90 	bl	8001190 <tir_enn>
+		sleep_moi(1);
+ 8001470:	2001      	movs	r0, #1
+ 8001472:	f7ff fd8b 	bl	8000f8c <sleep_moi>
 	//si l'ennemi est mort, effacer son missile
 	else if (p_ennemy->vie_enne == 0)
 	{
 		*ptr_y_mun_enn = 23;
 	}
- 8001474:	e007      	b.n	8001486 <random_tir+0x86>
-	//si l'ennemi est mort, effacer son missile
- 8001476:	687b      	ldr	r3, [r7, #4]
- 8001478:	789b      	ldrb	r3, [r3, #2]
- 800147a:	2b00      	cmp	r3, #0
- 800147c:	d103      	bne.n	8001486 <random_tir+0x86>
-	{
- 800147e:	4b04      	ldr	r3, [pc, #16]	; (8001490 <random_tir+0x90>)
- 8001480:	681b      	ldr	r3, [r3, #0]
- 8001482:	2217      	movs	r2, #23
- 8001484:	701a      	strb	r2, [r3, #0]
-	}
- 8001486:	bf00      	nop
- 8001488:	3708      	adds	r7, #8
- 800148a:	46bd      	mov	sp, r7
- 800148c:	bd80      	pop	{r7, pc}
- 800148e:	bf00      	nop
+}
+ 8001476:	e007      	b.n	8001488 <random_tir+0x88>
+	else if (p_ennemy->vie_enne == 0)
+ 8001478:	687b      	ldr	r3, [r7, #4]
+ 800147a:	789b      	ldrb	r3, [r3, #2]
+ 800147c:	2b00      	cmp	r3, #0
+ 800147e:	d103      	bne.n	8001488 <random_tir+0x88>
+		*ptr_y_mun_enn = 23;
+ 8001480:	4b03      	ldr	r3, [pc, #12]	; (8001490 <random_tir+0x90>)
+ 8001482:	681b      	ldr	r3, [r3, #0]
+ 8001484:	2217      	movs	r2, #23
+ 8001486:	701a      	strb	r2, [r3, #0]
+}
+ 8001488:	bf00      	nop
+ 800148a:	3708      	adds	r7, #8
+ 800148c:	46bd      	mov	sp, r7
+ 800148e:	bd80      	pop	{r7, pc}
  8001490:	20000068 	.word	0x20000068
  8001494:	20000090 	.word	0x20000090
  8001498:	20000094 	.word	0x20000094
@@ -3768,88 +3768,90 @@ int main(void)
 	int i = 0;
  8001722:	2300      	movs	r3, #0
  8001724:	607b      	str	r3, [r7, #4]
+	 *  E.g.  SCB->VTOR = 0x20000000;
+	 */
 
 	/* TODO - Add your application code here */
 
 	serial_init(BAUDRATE);
-	//init_enns();
-	menu();
  8001726:	f44f 30e1 	mov.w	r0, #115200	; 0x1c200
  800172a:	f000 fa03 	bl	8001b34 <serial_init>
+	//init_enns();
+	menu();
+ 800172e:	f000 f90b 	bl	8001948 <menu>
 	void jeu();
 
- 800172e:	f000 f90b 	bl	8001948 <menu>
 	/* Initialize LEDs */
 	STM_EVAL_LEDInit(LED3);
-	STM_EVAL_LEDInit(LED4);
-	STM_EVAL_LEDInit(LED5);
  8001732:	2001      	movs	r0, #1
  8001734:	f7ff fa26 	bl	8000b84 <STM_EVAL_LEDInit>
-	STM_EVAL_LEDInit(LED6);
+	STM_EVAL_LEDInit(LED4);
  8001738:	2000      	movs	r0, #0
  800173a:	f7ff fa23 	bl	8000b84 <STM_EVAL_LEDInit>
-
+	STM_EVAL_LEDInit(LED5);
  800173e:	2002      	movs	r0, #2
  8001740:	f7ff fa20 	bl	8000b84 <STM_EVAL_LEDInit>
-	/* Turn on LEDs */
+	STM_EVAL_LEDInit(LED6);
  8001744:	2003      	movs	r0, #3
  8001746:	f7ff fa1d 	bl	8000b84 <STM_EVAL_LEDInit>
+
+	/* Turn on LEDs */
 	STM_EVAL_LEDOn(LED3);
-	STM_EVAL_LEDOn(LED4);
-	STM_EVAL_LEDOn(LED5);
  800174a:	2001      	movs	r0, #1
  800174c:	f7ff fa48 	bl	8000be0 <STM_EVAL_LEDOn>
-	STM_EVAL_LEDOn(LED6);
+	STM_EVAL_LEDOn(LED4);
  8001750:	2000      	movs	r0, #0
  8001752:	f7ff fa45 	bl	8000be0 <STM_EVAL_LEDOn>
-
+	STM_EVAL_LEDOn(LED5);
  8001756:	2002      	movs	r0, #2
  8001758:	f7ff fa42 	bl	8000be0 <STM_EVAL_LEDOn>
-	/* Infinite loop */
+	STM_EVAL_LEDOn(LED6);
  800175c:	2003      	movs	r0, #3
  800175e:	f7ff fa3f 	bl	8000be0 <STM_EVAL_LEDOn>
+
+	/* Infinite loop */
 	while (1)
 	{
 		i++;
-	}
-}
  8001762:	687b      	ldr	r3, [r7, #4]
  8001764:	3301      	adds	r3, #1
  8001766:	607b      	str	r3, [r7, #4]
  8001768:	e7fb      	b.n	8001762 <main+0x46>
 
 0800176a <EVAL_AUDIO_TransferComplete_CallBack>:
+/*
+ * Callback used by stm32f4_discovery_audio_codec.c.
  * Refer to stm32f4_discovery_audio_codec.h for more info.
  */
 void EVAL_AUDIO_TransferComplete_CallBack(uint32_t pBuffer, uint32_t Size)
 {
-	/* TODO, implement your code here */
-	return;
  800176a:	b480      	push	{r7}
  800176c:	b083      	sub	sp, #12
  800176e:	af00      	add	r7, sp, #0
  8001770:	6078      	str	r0, [r7, #4]
  8001772:	6039      	str	r1, [r7, #0]
-}
-
+	/* TODO, implement your code here */
+	return;
  8001774:	bf00      	nop
-/*
+}
  8001776:	370c      	adds	r7, #12
  8001778:	46bd      	mov	sp, r7
  800177a:	f85d 7b04 	ldr.w	r7, [sp], #4
  800177e:	4770      	bx	lr
 
 08001780 <EVAL_AUDIO_GetSampleCallBack>:
+/*
+ * Callback used by stm324xg_eval_audio_codec.c.
  * Refer to stm324xg_eval_audio_codec.h for more info.
  */
 uint16_t EVAL_AUDIO_GetSampleCallBack(void)
 {
-	/* TODO, implement your code here */
-	return -1;
  8001780:	b480      	push	{r7}
  8001782:	af00      	add	r7, sp, #0
-}
+	/* TODO, implement your code here */
+	return -1;
  8001784:	f64f 73ff 	movw	r3, #65535	; 0xffff
+}
  8001788:	4618      	mov	r0, r3
  800178a:	46bd      	mov	sp, r7
  800178c:	f85d 7b04 	ldr.w	r7, [sp], #4

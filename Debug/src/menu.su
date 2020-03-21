@@ -1,4 +1,4 @@
-menu.c:37:6:bordures	16	static
-menu.c:60:6:ecran_fin	8	static
-menu.c:84:6:game_over	8	static
-menu.c:106:6:menu	8	static
+menu.c:35:6:bordures	16	static
+menu.c:58:6:ecran_fin	8	static
+menu.c:82:6:game_over	8	static
+menu.c:104:6:menu	8	static

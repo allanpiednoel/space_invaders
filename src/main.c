@@ -31,7 +31,6 @@
 #include "stm32f4xx.h"
 #include "stm32f4_discovery.h"
 #include "vt100.h"
-#include "menu.h"
 #include "serie.h"
 #include "depl_enn.h"
 #include <pthread.h>

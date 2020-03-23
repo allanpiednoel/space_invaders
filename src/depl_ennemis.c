@@ -208,6 +208,8 @@ void random_tir(donnees_ennemi *p_ennemy)
 	//si l'ennemi est mort, effacer son missile
 	else if (p_ennemy->vie_enne == 0)
 	{
+		vt100_move(*ptr_x_mun_enn, *ptr_y_mun_enn);
+		serial_puts(" ");
 		*ptr_y_mun_enn = 23;
 	}
 }

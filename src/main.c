@@ -66,7 +66,6 @@ int main(void)
 	serial_init(BAUDRATE);
 	//init_enns();
 	menu();
-	void jeu();
 
 	/* Initialize LEDs */
 	STM_EVAL_LEDInit(LED3);

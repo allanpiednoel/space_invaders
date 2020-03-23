@@ -87,18 +87,18 @@ void game_over()
 	vt100_move(35, 8);
 	serial_puts("         ");
 	sleep_moi(50);
-	vt100_move(36, 10);
-	serial_puts("T'ES NUL");
-	sleep_moi(50);
-	vt100_move(36, 10);
-	serial_puts("        ");
-	sleep_moi(50);
-	vt100_move(31, 12);
-	serial_puts("PERSONNE NE T'AIME");
-	sleep_moi(100);
-	vt100_move(31, 12);
-	serial_puts("                  ");
-	sleep_moi(100);
+//	vt100_move(36, 10);
+//	serial_puts("T'ES NUL");
+//	sleep_moi(50);
+//	vt100_move(36, 10);
+//	serial_puts("        ");
+//	sleep_moi(50);
+//	vt100_move(31, 12);
+//	serial_puts("PERSONNE NE T'AIME");
+//	sleep_moi(100);
+//	vt100_move(31, 12);
+//	serial_puts("                  ");
+//	sleep_moi(100);
 }
 
 void menu()

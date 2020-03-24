@@ -2597,9 +2597,9 @@ void sleep_moi(unsigned long int t)
  8000fbc:	000186a0 	.word	0x000186a0
 
 08000fc0 <depl_1_enn>:
-{ 35, 5, VIE_ENNEMIS, 6, TAILLE_ENNEMIS },
-{ 45, 5, VIE_ENNEMIS, 7, TAILLE_ENNEMIS },
-{ 4, 4, 4, ID_BOSS, 3 }, };
+{ X_4_ENNEMI, Y_2_ENNEMI, VIE_ENNEMIS, 7, TAILLE_ENNEMIS },
+{ X_BOSS, Y_BOSS, VIES_BOSS, ID_BOSS, TAILLE_BOSS }, };
+
 
 void depl_1_enn(donnees_ennemi *p_ennemy)
 {
@@ -3795,7 +3795,6 @@ int main(void)
 	//init_enns();
 	menu();
  8001752:	f000 f8db 	bl	800190c <menu>
-	//void jeu();
 
 	/* Initialize LEDs */
 	STM_EVAL_LEDInit(LED3);

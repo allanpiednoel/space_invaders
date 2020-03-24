@@ -13,7 +13,7 @@
 #include <stdlib.h>
 typedef uint16_t u16;
 
-static u8 sens = 0;
+static u8 sens;
 static u8 compteur_sens = 0;
 static u8 compteur_vies_ennemis = VIE_ENNEMIS * NOMBRE_ENNEMIS;
 static u8 compteur_tir_enn = 0;
@@ -26,15 +26,16 @@ u8 *ptr_compteur_tir = &compteur_tir_enn;
 int tps = VITESSE_ENNEMI_TPS;
 donnees_ennemi tableau_ennemis[9] =
 {
-{ 15, 3, VIE_ENNEMIS, 0, TAILLE_ENNEMIS },
-{ 25, 3, VIE_ENNEMIS, 1, TAILLE_ENNEMIS },
-{ 35, 3, VIE_ENNEMIS, 2, TAILLE_ENNEMIS },
-{ 45, 3, VIE_ENNEMIS, 3, TAILLE_ENNEMIS },
-{ 15, 5, VIE_ENNEMIS, 4, TAILLE_ENNEMIS },
-{ 25, 5, VIE_ENNEMIS, 5, TAILLE_ENNEMIS },
-{ 35, 5, VIE_ENNEMIS, 6, TAILLE_ENNEMIS },
-{ 45, 5, VIE_ENNEMIS, 7, TAILLE_ENNEMIS },
-{ 4, 4, 4, ID_BOSS, 3 }, };
+{ X_1_ENNEMI, Y_1_ENNEMI, VIE_ENNEMIS, 0, TAILLE_ENNEMIS },
+{ X_2_ENNEMI, Y_1_ENNEMI, VIE_ENNEMIS, 1, TAILLE_ENNEMIS },
+{ X_3_ENNEMI, Y_1_ENNEMI, VIE_ENNEMIS, 2, TAILLE_ENNEMIS },
+{ X_4_ENNEMI, Y_1_ENNEMI, VIE_ENNEMIS, 3, TAILLE_ENNEMIS },
+{ X_1_ENNEMI, Y_2_ENNEMI, VIE_ENNEMIS, 4, TAILLE_ENNEMIS },
+{ X_2_ENNEMI, Y_2_ENNEMI, VIE_ENNEMIS, 5, TAILLE_ENNEMIS },
+{ X_3_ENNEMI, Y_2_ENNEMI, VIE_ENNEMIS, 6, TAILLE_ENNEMIS },
+{ X_4_ENNEMI, Y_2_ENNEMI, VIE_ENNEMIS, 7, TAILLE_ENNEMIS },
+{ X_BOSS, Y_BOSS, VIES_BOSS, ID_BOSS, TAILLE_BOSS }, };
+
 
 void depl_1_enn(donnees_ennemi *p_ennemy)
 {

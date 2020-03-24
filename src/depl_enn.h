@@ -8,6 +8,7 @@
 #ifndef DEPL_ENN_H_
 #define DEPL_ENN_H_
 #include <stdint.h>
+
 typedef uint8_t u8;
 #define VITESSE_ENNEMI_TPS (1)
 #define VITESSE_BOSS_TPS (4)
@@ -24,6 +25,16 @@ typedef uint8_t u8;
 #define LIMITE_GAUCHE_ECRAN (2)
 #define BAUDRATE (115200)
 #define TAILLE_PERSO (6)
+#define X_1_ENNEMI (15)
+#define X_2_ENNEMI (25)
+#define X_3_ENNEMI (35)
+#define X_4_ENNEMI (45)
+#define Y_1_ENNEMI (3)
+#define Y_2_ENNEMI (5)
+#define X_BOSS (4)
+#define Y_BOSS (4)
+#define VIES_BOSS (4)
+#define TAILLE_BOSS (3)
 
 typedef struct
 {
@@ -60,10 +71,9 @@ void random_tir(donnees_ennemi *p_ennemy);
 void hit_ennemis(donnees_ennemi *p_ennemy);
 void depl_1_enn(donnees_ennemi *p_ennemy);
 
-
 int *ptr_x_missile;
 int *ptr_y_mun;
-u8*ptr_tir_ennemi;
+u8 *ptr_tir_ennemi;
 int *ptr_x_perso;
 u8 *ptr_vie_perso;
 u8 *ptr_lun_apres_lautre;
@@ -73,10 +83,5 @@ u8 *ptr_y_mun_enn;
 u8 *ptr_compteur_tir;
 u8 *ptr_vie_perso;
 u8 *pstart_combat_final;
-
-
-
-
-
 
 #endif /* DEPL_ENN_H_ */

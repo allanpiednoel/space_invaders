@@ -1,4 +1,4 @@
-depl_ennemis.c:39:6:depl_1_enn	24	static
-depl_ennemis.c:122:6:tir_enn	16	static
-depl_ennemis.c:168:6:hit_ennemis	16	static
-depl_ennemis.c:192:6:random_tir	16	static
+depl_ennemis.c:40:6:depl_1_enn	24	static
+depl_ennemis.c:123:6:tir_enn	16	static
+depl_ennemis.c:169:6:hit_ennemis	16	static
+depl_ennemis.c:193:6:random_tir	16	static

@@ -156,7 +156,6 @@ void tir_enn(donnees_ennemi *p_ennemy)
 	{
 		vt100_move(*ptr_x_mun_enn, *ptr_y_mun_enn + 1);
 		serial_puts(" ");
-		//sleep_moi(tps);
 		vt100_move(*ptr_x_perso, INIT_PERSO_Y);
 		serial_puts("#@~@#");
 		*ptr_vie_perso -= 1;
@@ -186,6 +185,7 @@ void hit_ennemis(donnees_ennemi *p_ennemy)
 		serial_puts("       ");
 		*ptr_y_mun = 3;
 		compteur_vies_ennemis -= 1;
+		//l'ennemi encore vivant réapparaîtra au prochain déplacement
 
 	}
 }

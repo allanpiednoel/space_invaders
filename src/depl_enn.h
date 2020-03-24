@@ -13,7 +13,7 @@ typedef uint8_t u8;
 #define VITESSE_ENNEMI_TPS (1)
 #define VITESSE_BOSS_TPS (4)
 #define ID_CASE_MAX (7)
-#define VIE_ENNEMIS (1)
+#define VIE_ENNEMIS (2)
 #define NOMBRE_ENNEMIS (8)
 #define ID_BOSS (8)
 #define TAILLE_ENNEMIS (6)
